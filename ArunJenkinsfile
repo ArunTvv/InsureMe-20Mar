@@ -37,7 +37,7 @@ stage('Create a Docker image') {
                              }
 stage('Push the Docker image') {
       steps {
-        sh 'docker aruntvv/insureme:latest'
+        sh 'docker push aruntvv/insureme:latest'
                                 }
             }
 }
