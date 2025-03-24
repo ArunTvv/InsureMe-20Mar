@@ -28,5 +28,17 @@ stage('Create a Docker image') {
         sh 'docker build -t aruntvv/insureme:latest .'
                     }
             }
+ stage('Login to Dockerhub') {
+      steps {
+       withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockerpass', usernameVariable: 'dockeruser')]) {
+        sh 'docker login -u ${dockeruser} -p ${dockerpass}'
+                                  }
+                                }
+                             }
+stage('Push the Docker image') {
+      steps {
+        sh 'docker aruntvv/insureme:latest'
+                                }
+            }
 }
 }
