@@ -40,5 +40,10 @@ stage('Push the Docker image') {
         sh 'docker push aruntvv/insureme:latest'
                                 }
             }
+stage('Ansbile config and Deployment') {
+      steps {
+        ansiblePlaybook credentialsId: 'sshkey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'deploy.yml', playbook: '', vaultTmpPath: ''
+                               }
+            }
 }
 }
